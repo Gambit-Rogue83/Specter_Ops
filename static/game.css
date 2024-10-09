@@ -1,0 +1,199 @@
+/* Impassable spaces */
+.impassable {
+    background-color: black;
+    pointer-events: none; /* Disable clicking */
+}
+
+/* Objective spaces */
+.objective {
+    background-color: #007bff;
+}
+
+/* Exit spaces before activation */
+.exit {
+    background-color: #64f567;
+}
+
+/* Exit spaces after activation */
+.exit-active {
+    background-color: #a7f8b2;
+}
+
+/* Main container to organize sections */
+.container {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Left section for Agent Details and Main Board */
+.left-section {
+    display: flex;
+    flex-direction: column;
+    width: 70%; /* Adjust the width of the left section */
+}
+
+/* Agent Details */
+.agent-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Space between Agent Details and Main Board */
+}
+
+.agent-portrait img {
+    width: 150px;
+    border-radius: 8px;
+}
+
+.agent-hp {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hp-row {
+    display: flex;
+    gap: 5px;
+}
+
+.hp-box {
+    width: 30px;
+    height: 30px;
+    border: 2px solid red;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.inventory {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.equipment-item {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid #333;
+}
+
+/* Main Board */
+.main-board {
+    flex-grow: 1;
+    overflow-y: auto; /* Allow vertical scrolling */
+    height: 600px; /* Adjust as needed */
+    border: 2px solid black;
+    padding: 10px;
+    background-color: #fafafa;
+}
+
+/* Board Grid: Adjust so all 23 columns fit in the viewport */
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(23, minmax(30px, 1fr)); /* Ensure all 23 columns fit horizontally */
+    gap: 2px;
+}
+
+.grid-cell {
+    width: 100%; /* Adjust so it fills its column space */
+    height: 50px;
+    border: 1px dotted black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Sidebar Tracking (Fixed to the right side) */
+.movement {
+    position: sticky;
+    top: 0;
+    width: 200px; /* Narrower Sidebar */
+    height: 100%;
+    padding: 20px;
+    background-color: #f0f0f0;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    border-left: 2px solid black;
+    overflow-y: auto; /* Ensure it can scroll vertically */
+}
+
+.movement h2 {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.turn-loc {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.turn {
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.loc {
+    width: 80px;
+    border: 1px solid #333;
+    height: 20px;
+    background-color: #fff;
+}
+
+.equipment-card {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.equipment-card.disabled {
+    filter: grayscale(100%);
+    pointer-events: none;
+}
+
+.equipment-card:hover:not(.disabled) {
+    transform: scale(1.5); /* Magnify on hover */
+}
+
+.equipment-name {
+    display: none;
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.equipment-card:hover:not(.disabled) .equipment-name {
+    display: block;
+}
+
+.mini-icon {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+

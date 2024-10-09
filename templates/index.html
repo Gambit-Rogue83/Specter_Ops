@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Specter Ops</title>
+    <style>
+        /* Center the button horizontally and vertically */
+        .centered-button {
+            background: linear-gradient(135deg, #bc383c 0%, #bc383c 40%, #ffffff 50%, #bc383c 60%, #bc383c 100%);
+            background-repeat: no-repeat;
+            background-size: 300%;
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 40px 60px;
+            font-size: 36px;
+            font-family: 'Black Ops One';
+            color: #f5f4f7;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Initial shadow */
+        }
+
+        /* Hover effect for the button */
+        .centered-button:hover {
+            animation: light 1s forwards;
+            -webkit-animation: light 1s forwards;
+            transform: translate(-50%, -50%) scale(1.1); /* Pop-out effect */
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+            border: 2px solid rgba(255, 255, 255, 0.8); /* Border on hover */
+        }
+
+        /* Light keyframe animation */
+        @keyframes light {
+            0% {
+                background-position: -600px;
+            }
+            100% {
+                background-position: 0px;
+            }
+        }
+
+        @-webkit-keyframes light {
+            0% {
+                background-position: -600px;
+            }
+            100% {
+                background-position: 0px;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=DotGothic16&display=swap" rel="stylesheet">
+</head>
+<body style="background-image: url(static/specter_ops_game_page.jpg);
+             background-size: 100vw 100vh;
+             background-repeat: no-repeat;
+             background-color: rgb(188,56,60)">
+
+<form action="/options" method="GET">
+<button class="centered-button light bounce">
+    SETUP GAME
+</button>
+</form>
+
+<!--#802834 maroon-->
+<!--#374878 blue-->
+<!--#bc383c bright red-->
+<!--#251726 black-->
+
+</body>
+</html>

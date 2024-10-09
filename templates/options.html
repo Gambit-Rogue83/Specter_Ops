@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose Your Setup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=DotGothic16&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/options.css">
+</head>
+<body>
+
+<!-- Character Selection Modal -->
+    <div id="characterModal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Select an Agent</h2>
+
+            <div class="character-selection">
+                <div class="character-container">
+                    <img src="static/bluejay.jpg" class="character-img" onclick="selectCharacter('Bluejay', this)" alt="Bluejay">
+                    <span class="character-name">Bluejay</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/cobra.jpg" class="character-img" onclick="selectCharacter('Cobra', this)" alt="Cobra">
+                    <span class="character-name">Cobra</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/orangutan.jpg" class="character-img" onclick="selectCharacter('Orangutan', this)" alt="Orangutan">
+                    <span class="character-name">Orangutan</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/spider.jpg" class="character-img" onclick="selectCharacter('Spider', this)" alt="Spider">
+                    <span class="character-name">Spider</span>
+                </div>
+            </div>
+
+            <br><br>
+            <button class="next-button" id="characterNext" disabled onclick="showOpponentModal()">
+                <span class="arrow">&#10596;</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Opponent Selection Modal -->
+    <div id="opponentModal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Select 3 Hunters</h2>
+            <div class="character-selection">
+
+                <div class="character-container">
+                    <img src="static/Gun.jpg" alt="The Gun" class="character-img" onclick="selectOpponent('Gun', this)">
+                    <span class="character-name">The Gun</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/Beast.jpg" alt="The Beast" class="character-img" onclick="selectOpponent('Beast', this)">
+                    <span class="character-name">The Beast</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/Puppet.jpg" alt="The Puppet" class="character-img" onclick="selectOpponent('Puppet', this)">
+                    <span class="character-name">The Puppet</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/Prophet.jpg" alt="The Prophet" class="character-img" onclick="selectOpponent('Prophet', this)">
+                    <span class="character-name">The Prophet</span>
+                </div>
+            </div>
+
+            <br><br>
+            <button class="next-button" id="opponentNext" disabled onclick="showEquipmentModal()">
+                <span class="arrow">&#10596;</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Equipment Selection Modal -->
+    <div id="equipmentModal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Select 5 Equipment Items</h2>
+            <div class="character-selection">
+
+<!--      UNIQUE EQUIPMENT          -->
+                <div class="character-container">
+                    <img src="static/blade.jpg" alt="Velocity Blade" class="character-img" id="equipCobra" data-equipment="blade" onclick="selectEquipment('blade', this)">
+                    <span class="character-name">Velocity Blade</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/tangle.jpg" alt="Tangling Line" class="character-img" id="equipSpider" data-equipment="tangle" onclick="selectEquipment('tangle', this)">
+                    <span class="character-name">Tangling Line</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/fists.jpg" alt="Power Fists" class="character-img" id="equipOrangutan" data-equipment="fists" onclick="selectEquipment('fists', this)">
+                    <span class="character-name">Power Fists</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/decoy.jpg" alt="Holo Decoy" class="character-img" id="equipBluejay" data-equipment="decoy" onclick="selectEquipment('decoy', this)">
+                    <span class="character-name">Holo Decoy</span>
+                </div>
+
+<!--        GENERIC EQUIPMENT        -->
+                <div class="character-container">
+                    <img src="static/stealth.jpg" alt="Stealth Field" class="character-img" onclick="selectEquipment('stealth', this)">
+                    <span class="character-name">Stealth Field</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/stealth.jpg" alt="Stealth Field" class="character-img" onclick="selectEquipment('stealth2', this)">
+                    <span class="character-name">Stealth Field</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/smoke.jpg" alt="Smoke Grenade" class="character-img" onclick="selectEquipment('smoke', this)">
+                    <span class="character-name">Smoke Grenade</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/smoke.jpg" alt="Smoke Grenade" class="character-img" onclick="selectEquipment('smoke2', this)">
+                    <span class="character-name">Smoke Grenade</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/flash.jpg" alt="Flash Bang" class="character-img" onclick="selectEquipment('flash', this)">
+                    <span class="character-name">Flash Bang</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/flash.jpg" alt="Flash Bang" class="character-img" onclick="selectEquipment('flash2', this)">
+                    <span class="character-name">Flash Bang</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/surge.jpg" alt="Adrenaline Surge" class="character-img" onclick="selectEquipment('surge', this)">
+                    <span class="character-name">Adrenaline Surge</span>
+                </div>
+                <div class="character-container">
+                    <img src="static/surge.jpg" alt="Adrenaline Surge" class="character-img" onclick="selectEquipment('surge2', this)">
+                    <span class="character-name">Adrenaline Surge</span>
+                </div>
+            </div>
+
+            <br><br>
+            <form id="gameForm" action="/start-game" method="POST">
+                <input type="hidden" id="selectedCharacter" name="character">
+                <input type="hidden" id="selectedOpponent" name="opponent">
+                <input type="hidden" id="selectedEquipment" name="equipment">
+                <button id="equipmentNext" class="next-button" disabled>
+                    <span class="start"> Start Game </span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+<script src="static/options.js"></script>
+</body>
+</html>

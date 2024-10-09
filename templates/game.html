@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="pdf2htmlEX"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<link rel="stylesheet" href="static/game.css">
+<title>Shadow of Babel</title>
+</head>
+<body>
+    <div class="container">
+
+    <!-- NAVIGATION PORTION / AGENT DETAILS -->
+    <div class="left-section">
+        <div class="agent-stats">
+            <!-- AGENT PORTRAIT -->
+            <div class="agent-portrait">
+                <img src="{{ agent.portrait_img }}" alt="Agent {{ agent.name }}">
+            </div>
+
+            <!-- AGENT HEALTH -->
+            <div class="agent-hp">
+                <div class="hp-row">
+                    {% for _ in range(agent.health // 2) %}
+                    <div class="hp-box"></div>
+                    {% endfor %}
+                </div>
+                <div class="hp-row">
+                    {% for _ in range(agent.health // 2) %}
+                    <div class="hp-box"></div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- AGENT EQUIPMENT -->
+            <div class="inventory">
+                {% for item in agent.equipment %}
+                <div class="equipment-card"
+                    onmouseover="magnifyCard(this)"
+                    onclick="activateEquipment('{{ item.name }}')"
+<!--                    {% if item.uses == 0 %} class="disabled" {% endif %}>-->
+                    <img src="static/{{ item }}.jpg" alt="{{ item }}" class="equipment-item">
+                    <div class="equipment-name">{{ item.name }} ({{ item.uses }} uses left)</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- MAIN BOARD -->
+        <div class="main-board">
+            <div class="board-grid">
+                {% for row in range(1, 33) %}
+                    {% for letter in alphabet %}
+                    <div class="grid-cell"
+                         data-coord="{{ letter }}{{ row }}"
+                         onclick="handleMoveClick('{{ letter }}{{ row }}')">
+                        {{ letter }}{{ row }}
+<!--                    Place character at N1 and hunters at K23-->
+                        {% if letter == 'N' and row == 1 %}
+                        <div><img class="mini-icon" id="character-icon" src="{{ agent.mini_icon }}"></div>
+                        {% elif letter == 'K' and row == 23 %}
+                        <div><img class="mini-icon" id="hunter-icon" src=""></div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- SIDE BAR TRACKING -->
+    <div class="movement">
+        <h2>MOVEMENT:</h2>
+        <button><img src="static/repeat.jpg" alt="Redo button"></button>
+
+        <!-- MOVEMENT TRACKING (TURN AND LOCATION) -->
+        {% for i in range(40) %}
+        <div class="turn-loc" id="turn-{{ i+1 }}">
+            <div class="turn">{{ i+1 }}</div>
+            <div class="loc" id="loc-{{ i+1 }}"></div>
+        </div>
+        {% endfor %}
+
+        <h3 id="game-status">MISSION FAILURE!</h3>
+    </div>
+</div>
+
+<script src="static/game.js"></script>
+</body>
+</html>
